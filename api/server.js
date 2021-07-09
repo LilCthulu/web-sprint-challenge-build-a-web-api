@@ -12,4 +12,8 @@ const actionsRouter = require('./actions/actions-router')
 server.use(express())
 server.use(express.json())
 
+server.use(logger)
+server.use("/api/projects", projectsRouter)
+    // server.use("/api/actions", actionsRouter)
+
 module.exports = server;
