@@ -16,16 +16,15 @@ router.get('/:id', validateProjectId, (req, res, next) => {
 })
 
 router.post('/', validateProject, (req, res, next) => {
-    Projects.insert(req.project)
+    Projects.insert(req.body)
         .then((newProject) => {
             res.status(201).json(newProject)
-            return Projects.get(newProject.id)
         })
         .catch(next)
 })
 
 router.put('/:id', validateProject, validateProjectId, (req, res, next) => {
-    Projects.update(req.params.id, req.project)
+    Projects.update(req.params.id, req.body)
         .then((updatedProject) => {
             res.json(updatedProject)
         })
